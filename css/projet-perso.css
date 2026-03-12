@@ -102,12 +102,21 @@ section img {
     margin: 15px auto 25px;
     border-radius: 20px;
     box-shadow: 3px 5px 0 #a8dadc;
+    cursor : pointer;
+    transition: transform 0.2s ease;
+}
+
+section img:hover {
+    transform: scale(1.03);
 }
 
 /* SECTION PRÉSENTATION UN PEU DIFFÉRENTE */
 #section1 {
     background-color: #fff3b0;
     box-shadow: 4px 6px 0 #f4a261;
+
+
+    
 }
 
 /* RESPONSIVE */
