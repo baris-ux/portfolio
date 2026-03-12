@@ -1,0 +1,202 @@
+/* Reset doux */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background-color: #fef6e4;
+    color: #5c4b51;
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #a8dadc;
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 6px solid #f4a261;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    color: #3a5a40;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #6d6875;
+    font-weight: 600;
+}
+
+/* Navigation */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 18px;
+    background-color: #f1faee;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #e9edc9;
+}
+
+.main-nav a {
+    text-decoration: none;
+    background-color: #ffe5d9;
+    color: #6d6875;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 2px 3px 0 #f4a261;
+    transition: all 0.25s ease;
+}
+
+.main-nav a:hover {
+    background-color: #ffd6a5;
+    transform: translateY(-3px);
+}
+
+/* Main */
+main {
+    width: min(950px, 92%);
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Sections */
+section {
+    background-color: #ffffff;
+    padding: 28px;
+    border-radius: 25px;
+    border: 3px solid #f1faee;
+    box-shadow: 4px 6px 0 #e9c46a;
+    transition: transform 0.25s ease;
+}
+
+section:hover {
+    transform: scale(1.015);
+}
+
+section h2 {
+    font-size: 1.5rem;
+    color: #2a9d8f;
+    margin-bottom: 14px;
+}
+
+section p,
+section li {
+    font-size: 1rem;
+}
+
+/* Liste */
+ul {
+    padding-left: 22px;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Un peu de variété visuelle */
+section:nth-of-type(1) {
+    background-color: #fff3b0;
+    box-shadow: 4px 6px 0 #f4a261;
+}
+
+section:nth-of-type(2) {
+    background-color: #ffffff;
+}
+
+section:nth-of-type(3) {
+    background-color: #fefae0;
+}
+
+section:nth-of-type(4) {
+    background-color: #faedcd;
+}
+
+section:nth-of-type(5) {
+    background-color: #e9f5db;
+}
+
+/* Responsive tablette */
+@media (max-width: 768px) {
+    header {
+        padding: 45px 15px 30px;
+    }
+
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .main-nav {
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .main-nav a {
+        padding: 9px 14px;
+        font-size: 0.95rem;
+    }
+
+    main {
+        width: 94%;
+        margin: 30px auto;
+        gap: 22px;
+    }
+
+    section {
+        padding: 22px;
+    }
+
+    section h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Responsive mobile */
+@media (max-width: 480px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-nav a {
+        width: 80%;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.45rem;
+    }
+
+    section {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    section h2 {
+        font-size: 1.15rem;
+    }
+
+    section p,
+    section li {
+        font-size: 0.95rem;
+    }
+}
