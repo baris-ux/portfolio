@@ -5,464 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio — Fin d'études</title>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Nunito:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --cream: #F5F0E8;
-  --orange: #FF5A1F;
-  --blue:   #1A3FFF;
-  --green:  #00C47A;
-  --yellow: #FFD93D;
-  --pink:   #FF3CAC;
-  --ink:    #1A1A2E;
-  --muted:  #6B6869;
-  --font-display: 'Unbounded', sans-serif;
-  --font-body:    'Nunito', sans-serif;
-  --font-mono:    'DM Mono', monospace;
-}
+<link rel="stylesheet" href="css/style.css">
 
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--font-body);
-  overflow-x: hidden;
-}
-
-/* grain overlay */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 999;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* NAV */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: var(--ink);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.75rem 2.5rem;
-}
-.nav-name {
-  font-family: var(--font-display);
-  font-size: 11px;
-  color: #fff;
-  letter-spacing: 0.06em;
-}
-.nav-tag {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  background: var(--orange);
-  color: #fff;
-  padding: 4px 12px;
-  border-radius: 20px;
-  letter-spacing: 0.05em;
-}
-
-/* HERO */
-.hero {
-  min-height: 92vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 0 4rem;
-  gap: 3rem;
-  position: relative;
-  border-bottom: 3px solid var(--ink);
-  overflow: hidden;
-}
-
-.hero-bg-circle {
-  position: absolute;
-  width: 500px; height: 500px;
-  border-radius: 50%;
-  background: var(--yellow);
-  opacity: 0.35;
-  right: -100px; top: -100px;
-  z-index: 0;
-}
-.hero-bg-circle2 {
-  position: absolute;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  background: var(--pink);
-  opacity: 0.2;
-  left: 30%; bottom: -60px;
-  z-index: 0;
-}
-
-.hero-left { position: relative; z-index: 1; }
-
-.hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--orange);
-  background: rgba(255,90,31,0.1);
-  display: inline-block;
-  padding: 5px 14px;
-  border-radius: 4px;
-  margin-bottom: 1.5rem;
-  animation: fadeLeft 0.7s ease both;
-}
-
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
-  animation: fadeLeft 0.7s 0.1s ease both;
-}
-
-.hero h1 .line-orange { color: var(--orange); }
-.hero h1 .line-blue   { color: var(--blue);   }
-
-.hero-desc {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--muted);
-  max-width: 440px;
-  margin-bottom: 2rem;
-  animation: fadeLeft 0.7s 0.2s ease both;
-}
-
-.hero-stats {
-  display: flex; gap: 2rem;
-  animation: fadeLeft 0.7s 0.3s ease both;
-}
-.stat { text-align: center; }
-.stat-num {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 900;
-  display: block;
-}
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.hero-right {
-  position: relative; z-index: 1;
-  display: flex; align-items: center; justify-content: center;
-}
-
-.hero-badge {
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  background: var(--ink);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  animation: spin-slow 30s linear infinite;
-  position: relative;
-}
-
-.hero-badge-inner {
-  animation: spin-slow 30s linear reverse infinite;
-  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-}
-
-.badge-emoji { font-size: 3rem; }
-
-.badge-title {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--yellow);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.badge-sub {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(255,255,255,0.5);
-}
-
-.badge-ring {
-  position: absolute; inset: -16px;
-  border-radius: 50%;
-  border: 2px dashed rgba(26,26,46,0.2);
-  animation: spin-slow 20s linear infinite;
-}
-
-/* SECTION */
-section {
-  padding: 5rem 4rem;
-  border-bottom: 2px solid var(--ink);
-}
-
-.section-header {
-  display: flex; align-items: baseline; gap: 1.5rem;
-  margin-bottom: 3.5rem;
-}
-.section-num {
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 900;
-  line-height: 1;
-  opacity: 0.07;
-  letter-spacing: -0.05em;
-  flex-shrink: 0;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-/* ACTIVITES GRID */
-.activites-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.act-card {
-  border: 2px solid var(--ink);
-  border-radius: 16px;
-  padding: 1.75rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  background: white;
-}
-.act-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 6px 6px 0 var(--ink);
-}
-
-.act-card-accent {
-  position: absolute;
-  top: 0; right: 0;
-  width: 80px; height: 80px;
-  border-radius: 0 14px 0 80px;
-  opacity: 0.15;
-}
-
-.act-icon { font-size: 2rem; margin-bottom: 1rem; }
-
-.act-photo {
-  width: 100%;
-  height: 160px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  display: block;
-  border: 1.5px solid rgba(26,26,46,0.1);
-}
-.act-photo-placeholder {
-  width: 100%;
-  height: 160px;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(26,26,46,0.03),
-    rgba(26,26,46,0.03) 8px,
-    rgba(26,26,46,0.06) 8px,
-    rgba(26,26,46,0.06) 16px
-  );
-  border: 2px dashed rgba(26,26,46,0.15);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 6px;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.act-photo-placeholder span { font-size: 1.5rem; }
-
-.act-category {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-}
-
-.act-title {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-}
-
-.act-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-}
-
-.act-footer {
-  display: flex; align-items: center; justify-content: space-between;
-}
-
-.act-hours {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1;
-}
-.act-hours-label {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.act-bar-wrap {
-  flex: 1; margin-left: 1rem;
-  height: 6px;
-  background: rgba(26,26,46,0.08);
-  border-radius: 99px;
-  overflow: hidden;
-}
-.act-bar {
-  height: 100%;
-  border-radius: 99px;
-  transition: width 1s ease;
-}
-
-/* THEMES */
-.themes-row {
-  display: flex; flex-wrap: wrap; gap: 1rem;
-}
-
-.theme-pill {
-  display: flex; align-items: center; gap: 0.75rem;
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  background: white;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.theme-pill:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 4px 4px 0 var(--ink);
-}
-.theme-pill .pill-icon { font-size: 1.25rem; }
-
-/* TOTAL BAR */
-.total-section {
-  background: var(--ink);
-  color: white;
-  padding: 4rem;
-  text-align: center;
-}
-.total-num {
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 15vw, 12rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  background: linear-gradient(135deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--pink));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 5s ease infinite;
-  background-size: 300%;
-}
-.total-label {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  margin-top: 0.5rem;
-}
-.total-breakdown {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
-  margin-top: 2.5rem;
-}
-.breakdown-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.7);
-}
-
-/* FOOTER */
-footer {
-  background: var(--orange);
-  color: white;
-  padding: 3rem 4rem;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 1rem;
-}
-.footer-msg {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-.footer-sub {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  opacity: 0.75;
-  margin-top: 0.5rem;
-  letter-spacing: 0.06em;
-}
-
-/* ANIMATIONS */
-@keyframes fadeLeft {
-  from { opacity: 0; transform: translateX(-24px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
-}
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50%       { background-position: 100% 50%; }
-}
-
-.reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.visible { opacity: 1; transform: none; }
-
-@media (max-width: 768px) {
-  .hero { grid-template-columns: 1fr; padding: 2rem; min-height: auto; padding-top: 3rem; }
-  .hero-right { display: none; }
-  section { padding: 3rem 1.5rem; }
-  footer { padding: 2rem 1.5rem; }
-  .total-section { padding: 3rem 1.5rem; }
-}
-</style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-name">Portfolio · Fin d'études · Informatique</div>
-  <div class="nav-tag">60 heures d'activités</div>
+  <div class="nav-name">Baris Ozcelik · Portfolio EPHEC</div>
+  <div style="display:flex;gap:0.75rem;align-items:center;">
+    <a href="#presentation" style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Présentation</a>
+    <a href="#projet" style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Projet pro</a>
+    <a href="#activites" style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Activités</a>
+    <div class="nav-tag">60h</div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -471,7 +27,7 @@ footer {
   <div class="hero-bg-circle2"></div>
 
   <div class="hero-left">
-    <div class="hero-eyebrow">Informaticien · Bientôt diplômé</div>
+    <div class="hero-eyebrow">Baris Ozcelik · Étudiant EPHEC 3ème année</div>
     <h1>
       Coder.<br>
       <span class="line-orange">Créer.</span><br>
@@ -508,10 +64,144 @@ footer {
   </div>
 </div>
 
+<!-- PRESENTATION -->
+<section id="presentation">
+  <div class="section-header reveal">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title">Qui<br>suis-je ?</div>
+    </div>
+  </div>
+
+  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
+
+    <div style="background:white;border:2px solid var(--ink);border-radius:16px;padding:2rem;">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">Identité</div>
+      <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;letter-spacing:-0.02em;margin-bottom:0.25rem;">Baris Ozcelik</div>
+      <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-bottom:1.5rem;">Étudiant en 3ème année · EPHEC Bruxelles<br>Technologie de l'Informatique</div>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:13px;color:var(--muted);">
+          <span style="font-size:1rem;">🎓</span> Bachelier en Technologie de l'Informatique
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:13px;color:var(--muted);">
+          <span style="font-size:1rem;">💼</span> Stage réalisé en entreprise
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:13px;color:var(--muted);">
+          <span style="font-size:1rem;">📍</span> Belgique
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--ink);border:2px solid var(--ink);border-radius:16px;padding:2rem;color:white;">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--yellow);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">En quelques mots</div>
+      <p style="font-size:14px;line-height:1.75;color:rgba(255,255,255,0.75);">
+        Je suis Baris, étudiant en dernière année d'informatique à l'EPHEC. Ce qui me définit le mieux, c'est ma curiosité : j'aime comprendre comment les choses fonctionnent, les déconstruire et les reconstruire à ma façon.
+      </p>
+      <p style="font-size:14px;line-height:1.75;color:rgba(255,255,255,0.75);margin-top:0.75rem;">
+        Mon parcours ne se limite pas à écrire du code — j'explore la création 3D avec Blender, je m'intéresse à l'entrepreneuriat, j'enseigne et je participe à des hackathons. Cette pluridisciplinarité est, selon moi, une vraie force dans un secteur en constante évolution.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="reveal" style="background:white;border:2px solid var(--ink);border-radius:16px;padding:2rem;">
+    <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.25rem;">Ce qui me passionne</div>
+    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+      <div style="display:flex;align-items:center;gap:0.5rem;background:rgba(255,90,31,0.08);border:1.5px solid rgba(255,90,31,0.25);border-radius:10px;padding:0.75rem 1.25rem;">
+        <span>⚡</span>
+        <div>
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--orange);">Créer de A à Z</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);">Concevoir, développer, livrer</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.5rem;background:rgba(255,60,172,0.08);border:1.5px solid rgba(255,60,172,0.25);border-radius:10px;padding:0.75rem 1.25rem;">
+        <span>🎨</span>
+        <div>
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--pink);">Interfaces & Expériences visuelles</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);">UI, 3D, design interactif</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.5rem;background:rgba(26,63,255,0.08);border:1.5px solid rgba(26,63,255,0.25);border-radius:10px;padding:0.75rem 1.25rem;">
+        <span>🧩</span>
+        <div>
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--blue);">Coder & Résoudre des problèmes</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);">Algorithmique, logique, débogage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJET PROFESSIONNEL -->
+<section id="projet" style="background:rgba(255,217,61,0.06);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);">
+  <div class="section-header reveal">
+    <div class="section-num">02</div>
+    <div>
+      <div class="section-title">Mon projet<br>professionnel</div>
+    </div>
+  </div>
+
+  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+
+    <div style="background:white;border:2px solid var(--ink);border-radius:16px;padding:2rem;">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">🟢 Mes points forts</div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;">
+        <div style="border-left:3px solid var(--green);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">Polyvalence technique</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Je suis à l'aise aussi bien en développement qu'en création 3D, réseau ou gestion de projet. Cette pluridisciplinarité me permet de m'adapter rapidement.</div>
+        </div>
+        <div style="border-left:3px solid var(--green);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">Autonomie & curiosité</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">J'apprends de manière autonome sur des sujets variés (Blender, Python, entrepreneuriat) sans attendre qu'on me les enseigne.</div>
+        </div>
+        <div style="border-left:3px solid var(--green);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">Sens de la communication</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Mon expérience de tutorat m'a appris à vulgariser des concepts complexes et à m'adapter à mon interlocuteur.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:white;border:2px solid var(--ink);border-radius:16px;padding:2rem;">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">🟠 Mes axes d'amélioration</div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;">
+        <div style="border-left:3px solid var(--orange);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">Spécialisation à construire</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Ma polyvalence est un atout, mais le marché de l'emploi valorise aussi une expertise marquée. Je dois identifier et approfondir ma spécialité principale.</div>
+        </div>
+        <div style="border-left:3px solid var(--orange);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">Gestion du temps & priorisation</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Avec de nombreux intérêts en parallèle, je dois encore progresser dans la priorisation de mes apprentissages pour éviter la dispersion.</div>
+        </div>
+        <div style="border-left:3px solid var(--orange);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">Réseau professionnel à développer</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Mon réseau dans le secteur tech est encore limité. Participer à plus d'événements et de communautés est un objectif concret pour les prochains mois.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reveal" style="background:var(--ink);border:2px solid var(--ink);border-radius:16px;padding:2rem;color:white;">
+    <div style="font-family:var(--font-mono);font-size:10px;color:var(--yellow);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.25rem;">🎯 Ma vision pour la suite</div>
+    <p style="font-size:14px;line-height:1.8;color:rgba(255,255,255,0.8);max-width:800px;">
+      À ce stade de mon parcours, je n'ai pas encore arrêté un métier précis — et je l'assume. Ce que je sais, c'est que je veux travailler dans un environnement où je peux <strong style="color:var(--yellow)">créer des choses concrètes</strong>, résoudre des problèmes réels et continuer à apprendre. Que ce soit dans le développement d'applications, la création d'expériences visuelles interactives ou même l'entrepreneuriat tech, ce qui compte pour moi c'est l'impact de ce que je produis.
+    </p>
+    <p style="font-size:14px;line-height:1.8;color:rgba(255,255,255,0.8);max-width:800px;margin-top:0.75rem;">
+      Mon stage m'a permis de confronter mes compétences au monde professionnel réel. Cette expérience, combinée aux activités de ce portfolio, m'a aidé à mieux cerner mes préférences et à construire une vision plus claire de la direction que je veux prendre.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:1.5rem;">
+      <span style="font-family:var(--font-mono);font-size:11px;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,217,61,0.3);color:var(--yellow);">Créer des produits complets</span>
+      <span style="font-family:var(--font-mono);font-size:11px;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,217,61,0.3);color:var(--yellow);">Environnement stimulant</span>
+      <span style="font-family:var(--font-mono);font-size:11px;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,217,61,0.3);color:var(--yellow);">Apprentissage continu</span>
+      <span style="font-family:var(--font-mono);font-size:11px;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,217,61,0.3);color:var(--yellow);">Impact concret</span>
+    </div>
+  </div>
+</section>
+
 <!-- ACTIVITES -->
 <section id="activites">
   <div class="section-header reveal">
-    <div class="section-num">01</div>
+    <div class="section-num">03</div>
     <div>
       <div class="section-title">Les activités<br>réalisées</div>
     </div>
@@ -714,7 +404,7 @@ footer {
 <!-- THEMES -->
 <section id="themes">
   <div class="section-header reveal">
-    <div class="section-num">02</div>
+    <div class="section-num">04</div>
     <div class="section-title">Thèmes<br>couverts</div>
   </div>
 
