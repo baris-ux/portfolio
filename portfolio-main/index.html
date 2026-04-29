@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Fin d'études</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Nunito:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F5F0E8;
+  --orange: #FF5A1F;
+  --blue:   #1A3FFF;
+  --green:  #00C47A;
+  --yellow: #FFD93D;
+  --pink:   #FF3CAC;
+  --ink:    #1A1A2E;
+  --muted:  #6B6869;
+  --font-display: 'Unbounded', sans-serif;
+  --font-body:    'Nunito', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* grain overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 2.5rem;
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 0.06em;
+}
+.nav-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: var(--orange);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+/* HERO */
+.hero {
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 4rem;
+  gap: 3rem;
+  position: relative;
+  border-bottom: 3px solid var(--ink);
+  overflow: hidden;
+}
+
+.hero-bg-circle {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: var(--yellow);
+  opacity: 0.35;
+  right: -100px; top: -100px;
+  z-index: 0;
+}
+.hero-bg-circle2 {
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: var(--pink);
+  opacity: 0.2;
+  left: 30%; bottom: -60px;
+  z-index: 0;
+}
+
+.hero-left { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(255,90,31,0.1);
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  animation: fadeLeft 0.7s ease both;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  animation: fadeLeft 0.7s 0.1s ease both;
+}
+
+.hero h1 .line-orange { color: var(--orange); }
+.hero h1 .line-blue   { color: var(--blue);   }
+
+.hero-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 440px;
+  margin-bottom: 2rem;
+  animation: fadeLeft 0.7s 0.2s ease both;
+}
+
+.hero-stats {
+  display: flex; gap: 2rem;
+  animation: fadeLeft 0.7s 0.3s ease both;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  display: block;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.hero-badge {
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  animation: spin-slow 30s linear infinite;
+  position: relative;
+}
+
+.hero-badge-inner {
+  animation: spin-slow 30s linear reverse infinite;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+
+.badge-emoji { font-size: 3rem; }
+
+.badge-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.badge-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+}
+
+.badge-ring {
+  position: absolute; inset: -16px;
+  border-radius: 50%;
+  border: 2px dashed rgba(26,26,46,0.2);
+  animation: spin-slow 20s linear infinite;
+}
+
+/* SECTION */
+section {
+  padding: 5rem 4rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.section-header {
+  display: flex; align-items: baseline; gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+.section-num {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.07;
+  letter-spacing: -0.05em;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ACTIVITES GRID */
+.activites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.act-card {
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: white;
+}
+.act-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.act-card-accent {
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 80px;
+  border-radius: 0 14px 0 80px;
+  opacity: 0.15;
+}
+
+.act-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+.act-photo {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  display: block;
+  border: 1.5px solid rgba(26,26,46,0.1);
+}
+.act-photo-placeholder {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(26,26,46,0.03),
+    rgba(26,26,46,0.03) 8px,
+    rgba(26,26,46,0.06) 8px,
+    rgba(26,26,46,0.06) 16px
+  );
+  border: 2px dashed rgba(26,26,46,0.15);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.act-photo-placeholder span { font-size: 1.5rem; }
+
+.act-category {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.act-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.act-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.act-footer {
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.act-hours {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.act-hours-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.act-bar-wrap {
+  flex: 1; margin-left: 1rem;
+  height: 6px;
+  background: rgba(26,26,46,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.act-bar {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 1s ease;
+}
+
+/* THEMES */
+.themes-row {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+}
+
+.theme-pill {
+  display: flex; align-items: center; gap: 0.75rem;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  background: white;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.theme-pill:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.theme-pill .pill-icon { font-size: 1.25rem; }
+
+/* TOTAL BAR */
+.total-section {
+  background: var(--ink);
+  color: white;
+  padding: 4rem;
+  text-align: center;
+}
+.total-num {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+  background-size: 300%;
+}
+.total-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.5rem;
+}
+.total-breakdown {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+  margin-top: 2.5rem;
+}
+.breakdown-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+}
+
+/* FOOTER */
+footer {
+  background: var(--orange);
+  color: white;
+  padding: 3rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-msg {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.footer-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 0.5rem;
+  letter-spacing: 0.06em;
+}
+
+/* ANIMATIONS */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; padding: 2rem; min-height: auto; padding-top: 3rem; }
+  .hero-right { display: none; }
+  section { padding: 3rem 1.5rem; }
+  footer { padding: 2rem 1.5rem; }
+  .total-section { padding: 3rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Portfolio · Fin d'études · Informatique</div>
+  <div class="nav-tag">60 heures d'activités</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle2"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">Informaticien · Bientôt diplômé</div>
+    <h1>
+      Coder.<br>
+      <span class="line-orange">Créer.</span><br>
+      <span class="line-blue">Comprendre.</span>
+    </h1>
+    <p class="hero-desc">
+      Un parcours pluridisciplinaire mêlant code, 3D, réseau, pédagogie et entrepreneuriat — bien au-delà du simple cursus.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" style="color:var(--orange)">60h</span>
+        <span class="stat-label">Total activités</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" style="color:var(--blue)">9</span>
+        <span class="stat-label">Domaines explorés</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" style="color:var(--green)">5</span>
+        <span class="stat-label">Thèmes majeurs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="badge-ring"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-inner">
+        <div class="badge-emoji">⚡</div>
+        <div class="badge-title">Full Stack<br>Maker</div>
+        <div class="badge-sub">Code · 3D · Réseau · Business</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITES -->
+<section id="activites">
+  <div class="section-header reveal">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title">Les activités<br>réalisées</div>
+    </div>
+  </div>
+
+  <div class="activites-grid reveal">
+
+    <!-- Hackathon -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--orange)"></div>
+      <!-- PHOTO: remplace src par ton image du hackathon -->
+      <!-- <img class="act-photo" src="photo-hackathon.jpg" alt="Hackathon"> -->
+      <div class="act-photo-placeholder"><span>📷</span>photo-hackathon.jpg</div>
+      <div class="act-icon">🏆</div>
+      <div class="act-category" style="color:var(--orange)">Compétition</div>
+      <div class="act-title">Hackathon</div>
+      <div class="act-desc">Développement en équipe sous pression, gestion du temps et livraison d'un projet complet en conditions réelles.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:var(--orange)">10</div>
+          <div class="act-hours-label">heures</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:100%; background:var(--orange)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tutorat néerlandais -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--blue)"></div>
+      <!-- PHOTO: remplace src par ton image du tutorat -->
+      <!-- <img class="act-photo" src="photo-tutorat.jpg" alt="Tutorat Néerlandais"> -->
+      <img class="act-photo" src="img/preuve_tutorat.png" alt="Tutorat Néerlandais">
+      <div class="act-icon">🇳🇱</div>
+      <div class="act-category" style="color:var(--blue)">Pédagogie</div>
+      <div class="act-title">Tutorat Néerlandais</div>
+      <div class="act-desc">Transmission de savoirs, patience et communication — des compétences essentielles en milieu professionnel.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:var(--blue)">10</div>
+          <div class="act-hours-label">heures</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:100%; background:var(--blue)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Démontage PC -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--muted)"></div>
+      <!-- PHOTO: remplace src par ton image du démontage PC -->
+      <!-- <img class="act-photo" src="photo-pc.jpg" alt="Démontage PC"> -->
+      <div class="act-photo-placeholder"><span>📷</span>photo-pc.jpg</div>
+      <div class="act-icon">🔧</div>
+      <div class="act-category" style="color:var(--muted)">Hardware</div>
+      <div class="act-title">Démontage & Assemblage PC</div>
+      <div class="act-desc">Connaissance du matériel informatique, diagnostic de composants et compréhension de l'architecture physique d'un système.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:var(--muted)">1</div>
+          <div class="act-hours-label">heure</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:10%; background:var(--muted)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Atelier Réseau -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--blue)"></div>
+      <!-- PHOTO: remplace src par ton image de l'atelier réseau -->
+      <!-- <img class="act-photo" src="photo-reseau.jpg" alt="Atelier Réseau"> -->
+      <div class="act-photo-placeholder"><span>📷</span>photo-reseau.jpg</div>
+      <div class="act-icon">🌐</div>
+      <div class="act-category" style="color:var(--blue)">Infrastructure</div>
+      <div class="act-title">Atelier Réseau</div>
+      <div class="act-desc">Configuration, topologie et protocoles réseaux — une base solide pour le développement d'applications distribuées et le DevOps.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:var(--blue)">4</div>
+          <div class="act-hours-label">heures</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:40%; background:var(--blue)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Création entreprise -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--green)"></div>
+      <!-- PHOTO: remplace src par ton image de la création d'entreprise -->
+      <!-- <img class="act-photo" src="photo-entreprise.jpg" alt="Création d'entreprise"> -->
+      <div class="act-photo-placeholder"><span>📷</span>photo-entreprise.jpg</div>
+      <div class="act-icon">💡</div>
+      <div class="act-category" style="color:var(--green)">Entrepreneuriat</div>
+      <div class="act-title">Création d'entreprise & Idéation</div>
+      <div class="act-desc">Business model, étude de marché, génération d'idées et premières démarches entrepreneuriales — pensée produit appliquée.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:var(--green)">5</div>
+          <div class="act-hours-label">heures</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:50%; background:var(--green)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blender Potion -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--pink)"></div>
+      <!-- PHOTO: remplace src par ton rendu Blender de la potion -->
+      <!-- <img class="act-photo" src="photo-blender-potion.jpg" alt="Blender Potion"> -->
+      <div class="act-photo-placeholder"><span>📷</span>photo-blender-potion.jpg</div>
+      <div class="act-icon">🧪</div>
+      <div class="act-category" style="color:var(--pink)">3D · Création</div>
+      <div class="act-title">Blender — Potion 3D</div>
+      <div class="act-desc">Modélisation, matériaux et rendu d'un objet 3D détaillé. Introduction à la pensée spatiale et aux outils de création numérique.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:var(--pink)">5</div>
+          <div class="act-hours-label">heures</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:50%; background:var(--pink)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blender Animation -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--pink)"></div>
+      <!-- PHOTO: remplace src par un screenshot de ton animation Blender (tasse) -->
+      <!-- <img class="act-photo" src="photo-blender-tasse.jpg" alt="Blender Tasse animée"> -->
+      <div class="act-photo-placeholder"><span>📷</span>photo-blender-tasse.jpg</div>
+      <div class="act-icon">☕</div>
+      <div class="act-category" style="color:var(--pink)">3D · Animation</div>
+      <div class="act-title">Blender — Tasse animée</div>
+      <div class="act-desc">Animation d'un objet avec remplissage simulé — physique des fluides, keyframes et rendu d'une scène animée complète.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:var(--pink)">5</div>
+          <div class="act-hours-label">heures</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:50%; background:var(--pink)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formation Python -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--yellow)"></div>
+      <!-- PHOTO: remplace src par une capture de ta formation Python -->
+      <!-- <img class="act-photo" src="photo-python.jpg" alt="Formation Python"> -->
+      <div class="act-photo-placeholder"><span>📷</span>photo-python.jpg</div>
+      <div class="act-icon">🐍</div>
+      <div class="act-category" style="color:#c9960a">Développement</div>
+      <div class="act-title">Formation Python</div>
+      <div class="act-desc">Apprentissage structuré de Python : syntaxe, structures de données, fonctions, modules et bonnes pratiques de développement.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:#c9960a">10</div>
+          <div class="act-hours-label">heures</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:100%; background:var(--yellow)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jeux Python Pygame -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--orange)"></div>
+      <!-- PHOTO: remplace src par un screenshot de ton jeu Pygame -->
+      <!-- <img class="act-photo" src="photo-pygame.jpg" alt="Jeux Pygame"> -->
+      <div class="act-photo-placeholder"><span>📷</span>photo-pygame.jpg</div>
+      <div class="act-icon">🎮</div>
+      <div class="act-category" style="color:var(--orange)">Game Dev</div>
+      <div class="act-title">Jeux Python · Pygame</div>
+      <div class="act-desc">Développement de jeux 2D avec Pygame — boucle de jeu, gestion des événements, collisions et rendu graphique temps réel.</div>
+      <div class="act-footer">
+        <div>
+          <div class="act-hours" style="color:var(--orange)">10</div>
+          <div class="act-hours-label">heures</div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:100%; background:var(--orange)"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THEMES -->
+<section id="themes">
+  <div class="section-header reveal">
+    <div class="section-num">02</div>
+    <div class="section-title">Thèmes<br>couverts</div>
+  </div>
+
+  <div class="themes-row reveal">
+    <div class="theme-pill" style="border-color:var(--orange); background:rgba(255,90,31,0.05)">
+      <span class="pill-icon">⚡</span>
+      <span style="color:var(--orange)">Développement Python & Game Dev</span>
+    </div>
+    <div class="theme-pill" style="border-color:var(--pink); background:rgba(255,60,172,0.05)">
+      <span class="pill-icon">🎨</span>
+      <span style="color:var(--pink)">Création 3D & Animation</span>
+    </div>
+    <div class="theme-pill" style="border-color:var(--blue); background:rgba(26,63,255,0.05)">
+      <span class="pill-icon">🌐</span>
+      <span style="color:var(--blue)">Réseaux & Infrastructure</span>
+    </div>
+    <div class="theme-pill" style="border-color:var(--green); background:rgba(0,196,122,0.05)">
+      <span class="pill-icon">💡</span>
+      <span style="color:var(--green)">Entrepreneuriat & Idéation</span>
+    </div>
+    <div class="theme-pill" style="border-color:var(--muted); background:rgba(107,104,105,0.05)">
+      <span class="pill-icon">🤝</span>
+      <span style="color:var(--muted)">Pédagogie & Transmission</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOTAL -->
+<div class="total-section">
+  <div class="total-num">60h</div>
+  <div class="total-label">d'activités extra-académiques réalisées</div>
+  <div class="total-breakdown">
+    <span class="breakdown-tag">Hackathon · 10h</span>
+    <span class="breakdown-tag">Tutorat · 10h</span>
+    <span class="breakdown-tag">Réseau · 4h</span>
+    <span class="breakdown-tag">Hardware · 1h</span>
+    <span class="breakdown-tag">Entrepreneuriat · 5h</span>
+    <span class="breakdown-tag">Blender Potion · 5h</span>
+    <span class="breakdown-tag">Blender Animation · 5h</span>
+    <span class="breakdown-tag">Formation Python · 10h</span>
+    <span class="breakdown-tag">Pygame · 10h</span>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-msg">Diplômé &<br>prêt à construire.</div>
+    <div class="footer-sub">Informatique · Portfolio fin d'études</div>
+  </div>
+  <div style="font-family:var(--font-display); font-size:3rem; font-weight:900; opacity:0.3">→</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
