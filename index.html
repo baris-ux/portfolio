@@ -457,17 +457,6 @@
   <div style="font-family:var(--font-display); font-size:3rem; font-weight:900; opacity:0.3">→</div>
 </footer>
 
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
