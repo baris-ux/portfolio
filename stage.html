@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage · Ambassade des États-Unis — Baris Ozcelik</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Nunito:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F5F0E8;
+  --orange: #FF5A1F;
+  --blue:   #1A3FFF;
+  --green:  #00C47A;
+  --yellow: #FFD93D;
+  --pink:   #FF3CAC;
+  --ink:    #1A1A2E;
+  --muted:  #6B6869;
+  --usa-red: #B22234;
+  --usa-blue: #3C3B6E;
+  --font-display: 'Unbounded', sans-serif;
+  --font-body:    'Nunito', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 2.5rem;
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 0.06em;
+}
+.nav-back {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.4rem;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--yellow); }
+.nav-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: var(--usa-red);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+/* HERO */
+.hero {
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 4rem;
+  gap: 3rem;
+  position: relative;
+  border-bottom: 3px solid var(--ink);
+  overflow: hidden;
+}
+
+.hero-stripe {
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--usa-red) 0px,
+    var(--usa-red) 18px,
+    transparent 18px,
+    transparent 36px
+  );
+  opacity: 0.04;
+  z-index: 0;
+}
+
+.hero-circle {
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: var(--usa-blue);
+  opacity: 0.12;
+  right: -60px; top: -80px;
+  z-index: 0;
+}
+
+.hero-left { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--usa-red);
+  background: rgba(178,34,52,0.08);
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  animation: fadeLeft 0.7s ease both;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  animation: fadeLeft 0.7s 0.1s ease both;
+}
+
+.hero h1 .accent { color: var(--usa-red); }
+
+.hero-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 440px;
+  margin-bottom: 2rem;
+  animation: fadeLeft 0.7s 0.2s ease both;
+}
+
+.hero-meta {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  animation: fadeLeft 0.7s 0.3s ease both;
+}
+.meta-chip {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border: 1.5px solid rgba(26,26,46,0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: white;
+}
+
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeRight 0.8s 0.2s ease both;
+}
+
+.emblem {
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 3px solid var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.emblem-flag { font-size: 4rem; margin-bottom: 0.75rem; }
+.emblem-title {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.emblem-sub {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.4rem;
+}
+
+.emblem-ring {
+  position: absolute; inset: -18px;
+  border-radius: 50%;
+  border: 2px dashed rgba(178,34,52,0.25);
+  animation: spin-slow 25s linear infinite;
+}
+.emblem-ring2 {
+  position: absolute; inset: -32px;
+  border-radius: 50%;
+  border: 1px dashed rgba(60,59,110,0.15);
+  animation: spin-slow 40s linear reverse infinite;
+}
+
+/* SECTIONS */
+section {
+  padding: 5rem 4rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.section-header {
+  display: flex; align-items: baseline; gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.section-num {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.07;
+  letter-spacing: -0.05em;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* MISSIONS */
+.missions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.mission-card {
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.mission-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.mission-accent {
+  position: absolute;
+  top: 0; right: 0;
+  width: 70px; height: 70px;
+  border-radius: 0 14px 0 70px;
+  opacity: 0.12;
+}
+
+.mission-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+.mission-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.mission-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.mission-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* COMPETENCES */
+.skills-wrap {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+
+.skill-row {
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  display: flex; align-items: center; gap: 1.5rem;
+}
+
+.skill-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 200px;
+}
+.skill-bar-wrap {
+  flex: 1;
+  height: 8px;
+  background: rgba(26,26,46,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.skill-bar {
+  height: 100%;
+  border-radius: 99px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.skill-bar.animated { width: var(--target-width); }
+
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  min-width: 60px;
+  text-align: right;
+}
+
+/* BILAN */
+.bilan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.bilan-card {
+  border-radius: 16px;
+  padding: 2rem;
+  border: 2px solid var(--ink);
+}
+
+/* PHOTO PLACEHOLDER */
+.photo-placeholder {
+  width: 100%;
+  height: 220px;
+  border-radius: 14px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(26,26,46,0.03),
+    rgba(26,26,46,0.03) 8px,
+    rgba(26,26,46,0.06) 8px,
+    rgba(26,26,46,0.06) 16px
+  );
+  border: 2px dashed rgba(26,26,46,0.15);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.photo-placeholder span { font-size: 1.75rem; }
+
+/* TIMELINE */
+.timeline {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--usa-red), var(--usa-blue));
+  border-radius: 99px;
+}
+.tl-item {
+  position: relative;
+  padding: 0 0 2rem 2rem;
+}
+.tl-dot {
+  position: absolute;
+  left: -1.95rem; top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: white;
+}
+.tl-month {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.tl-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.tl-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  background: var(--usa-blue);
+  color: white;
+  padding: 3rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-msg {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.footer-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+  letter-spacing: 0.06em;
+}
+.footer-back {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+.footer-back:hover { background: rgba(255,255,255,0.1); }
+
+/* ANIMATIONS */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; padding: 2rem; min-height: auto; padding-top: 3rem; }
+  .hero-right { display: none; }
+  section { padding: 3rem 1.5rem; }
+  footer { padding: 2rem 1.5rem; }
+  .bilan-grid { grid-template-columns: 1fr; }
+  .skill-label { min-width: 140px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Baris Ozcelik · Portfolio EPHEC</div>
+  <div style="display:flex;gap:0.75rem;align-items:center;">
+    <a href="index.html" class="nav-back">← Retour au portfolio</a>
+    <div class="nav-tag">🇺🇸 Stage · 3 mois</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-stripe"></div>
+  <div class="hero-circle"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">Expérience professionnelle · Stage</div>
+    <h1>
+      Ambassade des<br>
+      <span class="accent">États-Unis</span><br>
+      en Belgique
+    </h1>
+    <p class="hero-desc">
+      Trois mois au sein de l'une des institutions diplomatiques les plus emblématiques au monde — entre développement d'applications, infrastructure IT et réunions professionnelles.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-chip">📅 3 mois</div>
+      <div class="meta-chip">📍 Bruxelles, Belgique</div>
+      <div class="meta-chip">💼 Stage de fin d'études</div>
+      <div class="meta-chip">🎓 EPHEC</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="emblem-ring2"></div>
+    <div class="emblem-ring"></div>
+    <div class="emblem">
+      <div class="emblem-flag">🇺🇸</div>
+      <div class="emblem-title">Embassy of the<br>United States</div>
+      <div class="emblem-sub">Brussels · Belgium</div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSIONS -->
+<section>
+  <div class="section-header reveal">
+    <div class="section-num">01</div>
+    <div class="section-title">Mes missions<br>principales</div>
+  </div>
+
+  <div class="missions-grid reveal">
+
+    <div class="mission-card">
+      <div class="mission-accent" style="background:var(--blue)"></div>
+      <div class="mission-icon">⚡</div>
+      <div class="mission-tag" style="color:var(--blue)">Power Platform</div>
+      <div class="mission-title">Création d'applications</div>
+      <div class="mission-desc">
+        Participation au développement d'applications internes avec la Power Platform de Microsoft — Power Apps, Power Automate — pour automatiser et digitaliser des processus métier de l'ambassade.
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-accent" style="background:var(--green)"></div>
+      <div class="mission-icon">🌐</div>
+      <div class="mission-tag" style="color:var(--green)">Infrastructure IT</div>
+      <div class="mission-title">Support à l'équipe infrastructure</div>
+      <div class="mission-desc">
+        Contribution aux projets de l'équipe infrastructure — installation, configuration, maintenance et support technique dans un environnement hautement sécurisé et exigeant.
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-accent" style="background:var(--usa-red)"></div>
+      <div class="mission-icon">🤝</div>
+      <div class="mission-tag" style="color:var(--usa-red)">Collaboration</div>
+      <div class="mission-title">Participation aux réunions</div>
+      <div class="mission-desc">
+        Présence et implication dans des réunions d'équipe professionnelles — compréhension des enjeux organisationnels, prise de parole et travail en environnement multilingue et multiculturel.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section style="background:rgba(60,59,110,0.04); border-top:2px solid var(--ink);">
+  <div class="section-header reveal">
+    <div class="section-num">02</div>
+    <div class="section-title">Déroulé du<br>stage</div>
+  </div>
+
+  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--usa-red);border-color:var(--usa-red)"></div>
+        <div class="tl-month">Début de stage</div>
+        <div class="tl-title">Intégration & prise en main</div>
+        <div class="tl-desc">Découverte de l'environnement de travail, des outils internes et des équipes. Familiarisation avec les protocoles de sécurité propres à l'ambassade.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--blue);border-color:var(--blue)"></div>
+        <div class="tl-month">Phase de développement</div>
+        <div class="tl-title">Power Platform & projets IT</div>
+        <div class="tl-desc">Contribution active aux développements d'applications et aux projets infrastructure. Participation aux réunions d'équipe régulières.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--green);border-color:var(--green)"></div>
+        <div class="tl-month">Fin de stage</div>
+        <div class="tl-title">Bilan & restitution</div>
+        <div class="tl-desc">Consolidation des livrables, transfert de connaissances et bilan de l'expérience acquise sur 3 mois en milieu diplomatique.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="photo-placeholder">
+        <span>📷</span>photo-ambassade.jpg
+      </div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);text-align:center;letter-spacing:0.08em;">Remplace par une photo du stage</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPETENCES -->
+<section>
+  <div class="section-header reveal">
+    <div class="section-num">03</div>
+    <div class="section-title">Compétences<br>développées</div>
+  </div>
+
+  <div class="skills-wrap reveal">
+
+    <div class="skill-row">
+      <div class="skill-label">Power Apps / Power Automate</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar" style="--target-width:80%; background:var(--blue)"></div>
+      </div>
+      <div class="skill-tag">Avancé</div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-label">Infrastructure IT</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar" style="--target-width:65%; background:var(--green)"></div>
+      </div>
+      <div class="skill-tag">Intermédiaire</div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-label">Communication pro & réunions</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar" style="--target-width:75%; background:var(--usa-red)"></div>
+      </div>
+      <div class="skill-tag">Avancé</div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-label">Travail en équipe internationale</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar" style="--target-width:85%; background:var(--orange)"></div>
+      </div>
+      <div class="skill-tag">Avancé</div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-label">Anglais professionnel</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar" style="--target-width:70%; background:var(--usa-blue)"></div>
+      </div>
+      <div class="skill-tag">Intermédiaire</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BILAN -->
+<section style="background:rgba(178,34,52,0.03); border-top:2px solid var(--ink);">
+  <div class="section-header reveal">
+    <div class="section-num">04</div>
+    <div class="section-title">Ce que j'en<br>retiens</div>
+  </div>
+
+  <div class="bilan-grid reveal">
+
+    <div class="bilan-card" style="background:var(--ink); color:white;">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--yellow);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">✨ Ce que j'ai apprécié</div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;">
+        <div style="border-left:3px solid var(--yellow);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;color:white;">Un environnement exceptionnel</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Travailler dans une ambassade américaine est une expérience rare qui m'a exposé à un cadre professionnel rigoureux et international.</div>
+        </div>
+        <div style="border-left:3px solid var(--yellow);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;color:white;">La Power Platform en conditions réelles</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Développer des applications utilisées concrètement au sein de l'institution m'a permis de mesurer l'impact direct de mon travail.</div>
+        </div>
+        <div style="border-left:3px solid var(--yellow);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;color:white;">L'immersion multiculturelle</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Collaborer avec des équipes internationales au quotidien a renforcé ma capacité à m'adapter et à communiquer en contexte professionnel.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bilan-card" style="background:white;">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--usa-red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">🎯 Ce que j'en retire pour la suite</div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;">
+        <div style="border-left:3px solid var(--usa-red);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">La valeur du no-code / low-code</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Power Platform m'a montré comment créer des solutions concrètes rapidement — une compétence de plus en plus valorisée en entreprise.</div>
+        </div>
+        <div style="border-left:3px solid var(--usa-red);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">La rigueur des environnements sécurisés</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Travailler dans un cadre sécurisé m'a appris l'importance des protocoles, de la discrétion et de la fiabilité en milieu professionnel exigeant.</div>
+        </div>
+        <div style="border-left:3px solid var(--usa-red);padding-left:1rem;">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:0.2rem;">La confiance en mes compétences</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Contribuer à des projets réels dans un tel environnement a confirmé que mes compétences techniques ont une valeur concrète sur le terrain.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-msg">Une expérience qui<br>marque un parcours.</div>
+    <div class="footer-sub">Stage · Ambassade des États-Unis · Bruxelles</div>
+  </div>
+  <a href="index.html" class="footer-back">← Retour au portfolio</a>
+</footer>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Animate skill bars when visible
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar').forEach(bar => bar.classList.add('animated'));
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skills-wrap').forEach(el => barObserver.observe(el));
+</script>
+
+</body>
+</html>
