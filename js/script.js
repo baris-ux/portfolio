@@ -1,20 +1,10 @@
-const images = document.querySelectorAll("section img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-
-images.forEach(img => {
-    img.addEventListener("click", () => {
-        lightbox.style.display = "flex";
-        lightboxImg.src = img.src;
-    });
-});
-
-lightbox.addEventListener("click", () => {
-    lightbox.style.display = "none";
-});
-
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        lightbox.style.display = "none";
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
     }
-});
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
