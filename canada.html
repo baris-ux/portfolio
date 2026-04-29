@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canada · Semaine Internationale — Baris Ozcelik</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Nunito:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F5F0E8;
+  --orange: #FF5A1F;
+  --blue:   #1A3FFF;
+  --green:  #00C47A;
+  --yellow: #FFD93D;
+  --pink:   #FF3CAC;
+  --ink:    #1A1A2E;
+  --muted:  #6B6869;
+  --canada: #D52B1E;
+  --font-display: 'Unbounded', sans-serif;
+  --font-body:    'Nunito', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 2.5rem;
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 0.06em;
+}
+.nav-back {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.4rem;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--yellow); }
+.nav-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: var(--canada);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+/* HERO */
+.hero {
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 4rem;
+  gap: 3rem;
+  position: relative;
+  border-bottom: 3px solid var(--ink);
+  overflow: hidden;
+}
+.hero-bg-maple {
+  position: absolute;
+  font-size: 32rem;
+  right: -4rem; top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.15;
+  pointer-events: none;
+  line-height: 1;
+  z-index: 0;
+  user-select: none;
+}
+.hero-bg-circle {
+  position: absolute;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: var(--canada);
+  opacity: 0.08;
+  right: -80px; top: -80px;
+  z-index: 0;
+}
+.hero-bg-circle2 {
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: var(--yellow);
+  opacity: 0.2;
+  left: 35%; bottom: -40px;
+  z-index: 0;
+}
+.hero-left { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--canada);
+  background: rgba(213,43,30,0.1);
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  animation: fadeLeft 0.7s ease both;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  animation: fadeLeft 0.7s 0.1s ease both;
+}
+.hero h1 .accent { color: var(--canada); }
+.hero-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 440px;
+  margin-bottom: 2rem;
+  animation: fadeLeft 0.7s 0.2s ease both;
+}
+.hero-meta {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  animation: fadeLeft 0.7s 0.3s ease both;
+}
+.meta-chip {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  background: white;
+  border: 1.5px solid rgba(26,26,46,0.12);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+}
+.meta-chip strong { color: var(--ink); font-weight: 600; }
+
+/* HERO RIGHT — photo principale */
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-photo-frame {
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  border: 3px solid var(--ink);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 8px 8px 0 var(--ink);
+  animation: fadeLeft 0.7s 0.2s ease both;
+}
+.hero-photo-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-photo-placeholder {
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(26,26,46,0.03),
+    rgba(26,26,46,0.03) 8px,
+    rgba(26,26,46,0.06) 8px,
+    rgba(26,26,46,0.06) 16px
+  );
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hero-photo-placeholder span { font-size: 2rem; }
+
+.photo-badge {
+  position: absolute; bottom: 1rem; left: 1rem;
+  background: var(--canada);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+/* SECTIONS */
+section {
+  padding: 5rem 4rem;
+  border-bottom: 2px solid var(--ink);
+}
+.section-header {
+  display: flex; align-items: baseline; gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.section-num {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.07;
+  letter-spacing: -0.05em;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--canada), var(--orange), var(--blue));
+  border-radius: 99px;
+}
+.tl-item {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 2.5rem;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute;
+  left: -2.45rem;
+  top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+.tl-week {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.35rem;
+}
+.tl-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.tl-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+/* PHOTO GRID */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.photo-card {
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.photo-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.photo-card img {
+  width: 100%; height: 200px;
+  object-fit: cover; display: block;
+}
+.photo-card-placeholder {
+  width: 100%; height: 200px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(26,26,46,0.03),
+    rgba(26,26,46,0.03) 8px,
+    rgba(26,26,46,0.06) 8px,
+    rgba(26,26,46,0.06) 16px
+  );
+  border-bottom: 2px dashed rgba(26,26,46,0.12);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.photo-card-placeholder span { font-size: 1.75rem; }
+.photo-caption {
+  padding: 0.85rem 1rem;
+}
+.photo-caption-title {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.photo-caption-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* TECH STACK */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+.tech-card {
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 1.25rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.tech-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.tech-icon { font-size: 1.75rem; margin-bottom: 0.6rem; }
+.tech-name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.tech-role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* COMPETENCES ACQUISES */
+.comp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.comp-card {
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  padding: 1.75rem;
+}
+.comp-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.comp-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.comp-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* TÉMOIGNAGE / CITATION */
+.quote-block {
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  padding: 2.5rem;
+  color: white;
+  position: relative;
+}
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 6rem;
+  line-height: 0.8;
+  color: var(--canada);
+  opacity: 0.4;
+  position: absolute;
+  top: 1.5rem; left: 2rem;
+  pointer-events: none;
+}
+.quote-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.85);
+  font-style: italic;
+  padding-top: 2rem;
+}
+.quote-author {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--yellow);
+  margin-top: 1.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* FOOTER */
+.page-footer {
+  background: var(--canada);
+  color: white;
+  padding: 3rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-msg {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.footer-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 0.5rem;
+  letter-spacing: 0.06em;
+}
+.back-btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: white;
+  color: var(--canada);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 12px;
+  border: 2px solid white;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+.back-btn:hover { background: var(--canada); color: white; }
+
+/* ANIMATIONS */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; padding: 2rem; min-height: auto; padding-top: 3rem; }
+  .hero-right { display: none; }
+  section { padding: 3rem 1.5rem; }
+  .comp-grid { grid-template-columns: 1fr; }
+  .page-footer { padding: 2rem 1.5rem; }
+  nav { padding: 0.75rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">Baris Ozcelik · Portfolio EPHEC</div>
+  <div style="display:flex;gap:0.75rem;align-items:center;">
+    <a href="index.html" class="nav-back">← Retour au portfolio</a>
+    <div class="nav-tag">🇨🇦 Toronto</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle2"></div>
+  <div class="hero-bg-maple">🍁</div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">Semaine internationale · Juin – Juillet 2025</div>
+    <h1>
+      Toronto.<br>
+      <span class="accent">Coder</span><br>
+      ensemble.
+    </h1>
+    <p class="hero-desc">
+      2 semaines au Seneca College de Toronto pour développer une application mobile React Native en équipe multiculturelle — étudiants belges, danois et canadiens.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-chip">📍 <strong>Toronto, Canada</strong></div>
+      <div class="meta-chip">🏫 <strong>Seneca College</strong></div>
+      <div class="meta-chip">⏱ <strong>2 semaines</strong></div>
+      <div class="meta-chip">👥 <strong>3 nationalités</strong></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-photo-frame">
+      <!--
+        PHOTO PRINCIPALE : remplace par ta meilleure photo du séjour
+        <img src="img/canada-hero.jpg" alt="Toronto Seneca College">
+      -->
+      <div class="hero-photo-placeholder">
+        <span>📷</span>
+        canada-hero.jpg
+      </div>
+      <div class="photo-badge">🇨🇦 Seneca College · Toronto</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 · CONTEXTE -->
+<section id="contexte">
+  <div class="section-header reveal">
+    <div class="section-num">01</div>
+    <div class="section-title">Le contexte<br>du projet</div>
+  </div>
+
+  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+
+    <div style="background:white;border:2px solid var(--ink);border-radius:16px;padding:2rem;">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--canada);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">Le cadre</div>
+      <p style="font-size:14px;line-height:1.75;color:var(--muted);">
+        Dans le cadre de la <strong style="color:var(--ink);">semaine internationale de l'EPHEC</strong>, j'ai eu l'opportunité de partir deux semaines au <strong style="color:var(--ink);">Seneca College de Toronto</strong> pour participer à un projet de développement mobile collaboratif.
+      </p>
+      <p style="font-size:14px;line-height:1.75;color:var(--muted);margin-top:0.75rem;">
+        L'objectif : concevoir, développer et présenter une application mobile complète en React Native, en anglais, avec des étudiants de nationalités différentes.
+      </p>
+    </div>
+
+    <div style="background:var(--ink);border:2px solid var(--ink);border-radius:16px;padding:2rem;color:white;">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--yellow);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">L'équipe</div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span style="font-size:1.4rem;">🇧🇪</span>
+          <div>
+            <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:white;">Étudiants belges</div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">EPHEC · Bruxelles</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span style="font-size:1.4rem;">🇩🇰</span>
+          <div>
+            <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:white;">Étudiants danois</div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">Partenaires européens</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <span style="font-size:1.4rem;">🇨🇦</span>
+          <div>
+            <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:white;">Étudiants canadiens</div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.5);">Seneca College · Toronto</div>
+          </div>
+        </div>
+        <div style="margin-top:0.5rem;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.1);">
+          <div style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.5);">Langue de travail</div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--yellow);margin-top:0.2rem;">Anglais · B2</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 02 · DÉROULÉ -->
+<section id="deroulement" style="background:rgba(213,43,30,0.03);border-top:2px solid var(--ink);">
+  <div class="section-header reveal">
+    <div class="section-num">02</div>
+    <div class="section-title">Déroulé<br>des 2 semaines</div>
+  </div>
+
+  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--canada);"></div>
+        <div class="tl-week" style="color:var(--canada);">Semaine 1 · Jours 1–2</div>
+        <div class="tl-title">Kick-off & formation des équipes</div>
+        <div class="tl-desc">Présentation du projet, formation des équipes mixtes, définition des rôles et choix de l'idée d'application. Premier contact avec les étudiants canadiens et danois.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--orange);"></div>
+        <div class="tl-week" style="color:var(--orange);">Semaine 1 · Jours 3–5</div>
+        <div class="tl-title">Conception & maquettes</div>
+        <div class="tl-desc">Définition des fonctionnalités, wireframes, choix de l'architecture React Native. Mise en place du repo GitHub et premiers composants.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--blue);"></div>
+        <div class="tl-week" style="color:var(--blue);">Semaine 2 · Jours 6–9</div>
+        <div class="tl-title">Développement intensif</div>
+        <div class="tl-desc">Sprint de développement : navigation, écrans principaux, intégration des données, tests sur device réel. Coordination quotidienne en stand-up.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--green);"></div>
+        <div class="tl-week" style="color:var(--green);">Semaine 2 · Jour 10</div>
+        <div class="tl-title">Présentation finale</div>
+        <div class="tl-desc">Demo devant les professeurs et autres équipes. Présentation en anglais du produit, des choix techniques et du bilan de collaboration.</div>
+      </div>
+    </div>
+
+    <!-- Photo colonne droite -->
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="photo-card" style="flex:1;">
+        <!--
+          PHOTO : remplace par une photo de travail en équipe
+          <img src="img/canada-team.jpg" alt="Travail en équipe">
+        -->
+        <div class="photo-card-placeholder" style="height:240px;">
+          <span>📷</span>canada-team.jpg
+        </div>
+        <div class="photo-caption">
+          <div class="photo-caption-title">L'équipe au travail</div>
+          <div class="photo-caption-sub">Seneca College · Toronto · Juin 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · L'APPLICATION -->
+<section id="app">
+  <div class="section-header reveal">
+    <div class="section-num">03</div>
+    <div class="section-title">L'application<br>développée</div>
+  </div>
+
+  <!-- Screenshots -->
+  <div class="photo-grid reveal" style="margin-bottom:2rem;">
+    <!--
+      CAPTURES D'ÉCRAN : remplace les placeholders par tes vraies captures
+      <img src="img/app-screen1.jpg" alt="Écran 1">
+    -->
+    <div class="photo-card">
+      <div class="photo-card-placeholder"><span>📱</span>app-screen1.jpg</div>
+      <div class="photo-caption">
+        <div class="photo-caption-title">Écran d'accueil</div>
+        <div class="photo-caption-sub">React Native · Expo</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-placeholder"><span>📱</span>app-screen2.jpg</div>
+      <div class="photo-caption">
+        <div class="photo-caption-title">Navigation principale</div>
+        <div class="photo-caption-sub">React Navigation</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-placeholder"><span>📱</span>app-screen3.jpg</div>
+      <div class="photo-caption">
+        <div class="photo-caption-title">Fonctionnalité clé</div>
+        <div class="photo-caption-sub"><!-- Décris ta feature principale --></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Description de l'app -->
+  <div class="reveal" style="background:white;border:2px solid var(--ink);border-radius:16px;padding:2rem;margin-bottom:1rem;">
+    <div style="font-family:var(--font-mono);font-size:10px;color:var(--orange);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">Description du projet</div>
+    <p style="font-size:14px;line-height:1.75;color:var(--muted);max-width:800px;">
+      <!-- 
+        REMPLACE CE PARAGRAPHE par la description de ton app.
+        Par exemple :
+        "Notre application permettait aux voyageurs de découvrir des spots locaux 
+        recommandés par des habitants. L'utilisateur pouvait créer un profil, 
+        ajouter des lieux et noter ceux des autres membres."
+      -->
+      Notre équipe a développé une application mobile permettant [<em>décris ici la fonction principale de l'app</em>]. Le projet a été conçu pour répondre à un besoin réel identifié lors du brief initial, avec une approche orientée utilisateur dès la phase de conception.
+    </p>
+  </div>
+
+  <!-- Tech stack -->
+  <div class="reveal">
+    <div style="font-family:var(--font-mono);font-size:10px;color:var(--blue);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;">Stack technique utilisé</div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-icon">⚛️</div>
+        <div class="tech-name">React Native</div>
+        <div class="tech-role">Framework principal</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">📦</div>
+        <div class="tech-name">Expo</div>
+        <div class="tech-role">Build & dev server</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🗂</div>
+        <div class="tech-name">React Navigation</div>
+        <div class="tech-role">Navigation entre écrans</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🐙</div>
+        <div class="tech-name">GitHub</div>
+        <div class="tech-role">Versioning & collaboration</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🎨</div>
+        <div class="tech-name">Figma</div>
+        <div class="tech-role">Maquettes & design</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🌐</div>
+        <div class="tech-name">API REST</div>
+        <div class="tech-role">Données dynamiques</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · CE QUE J'AI APPRIS -->
+<section id="bilan" style="background:rgba(255,217,61,0.06);border-top:2px solid var(--ink);">
+  <div class="section-header reveal">
+    <div class="section-num">04</div>
+    <div class="section-title">Ce que j'ai<br>appris</div>
+  </div>
+
+  <div class="comp-grid reveal" style="margin-bottom:1rem;">
+    <div class="comp-card">
+      <div class="comp-num" style="color:var(--canada);">01</div>
+      <div class="comp-label">Collaboration interculturelle</div>
+      <div class="comp-desc">Travailler avec des personnes de cultures différentes m'a appris à adapter ma communication, à être patient et à valoriser les points de vue variés dans la prise de décision technique.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num" style="color:var(--orange);">02</div>
+      <div class="comp-label">Anglais professionnel</div>
+      <div class="comp-desc">Mener des stand-ups, débattre d'architecture et présenter le produit final en anglais m'a permis de consolider un niveau B2 dans un contexte réel et exigeant.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num" style="color:var(--blue);">03</div>
+      <div class="comp-label">React Native en conditions réelles</div>
+      <div class="comp-desc">Développer une app fonctionnelle en 2 semaines avec des contraintes de temps strictes m'a forcé à être efficace, à prioriser les features et à déboguer rapidement.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num" style="color:var(--green);">04</div>
+      <div class="comp-label">Gestion de projet agile</div>
+      <div class="comp-desc">Sprints quotidiens, répartition des tâches sur GitHub, revues de code entre équipiers — une introduction concrète aux méthodes de travail professionnelles.</div>
+    </div>
+  </div>
+
+  <!-- Citation perso -->
+  <div class="reveal quote-block">
+    <div class="quote-mark">"</div>
+    <div class="quote-text">
+      Cette expérience m'a prouvé que je suis capable de m'intégrer dans une équipe internationale, de livrer un produit réel sous pression et de communiquer efficacement en anglais dans un contexte technique. C'est la compétence la plus précieuse que je repars de Toronto.
+    </div>
+    <div class="quote-author">— Baris Ozcelik · Juin – Juillet 2025 · Toronto, Canada</div>
+  </div>
+</section>
+
+<!-- 05 · GALERIE -->
+<section id="galerie">
+  <div class="section-header reveal">
+    <div class="section-num">05</div>
+    <div class="section-title">Galerie<br>photos</div>
+  </div>
+
+  <div class="photo-grid reveal">
+    <!--
+      GALERIE : remplace chaque placeholder par tes photos du séjour
+      (campus, ville de Toronto, sortie en équipe, présentation finale, etc.)
+    -->
+    <div class="photo-card">
+      <div class="photo-card-placeholder"><span>🏙️</span>toronto-ville.jpg</div>
+      <div class="photo-caption">
+        <div class="photo-caption-title">Toronto · CN Tower</div>
+        <div class="photo-caption-sub">Juin 2025</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-placeholder"><span>🏫</span>seneca-campus.jpg</div>
+      <div class="photo-caption">
+        <div class="photo-caption-title">Seneca College · Campus</div>
+        <div class="photo-caption-sub">Lieu de la formation</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-placeholder"><span>🎤</span>presentation-finale.jpg</div>
+      <div class="photo-caption">
+        <div class="photo-caption-title">Présentation finale</div>
+        <div class="photo-caption-sub">Demo day · Juillet 2025</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-placeholder"><span>👥</span>equipe-photo.jpg</div>
+      <div class="photo-caption">
+        <div class="photo-caption-title">L'équipe complète</div>
+        <div class="photo-caption-sub">🇧🇪 🇩🇰 🇨🇦</div>
+      </div>
+    </div>
+    <!-- Ajoute d'autres photo-card si tu as plus de photos -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div>
+    <div class="footer-msg">Une expérience<br>qui reste.</div>
+    <div class="footer-sub">Semaine internationale · EPHEC · Seneca College Toronto · 2025</div>
+  </div>
+  <a href="index.html" class="back-btn">← Retour au portfolio</a>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
