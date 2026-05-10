@@ -634,6 +634,21 @@ footer {
 }
 .reveal.visible { opacity: 1; transform: none; }
 
+
+/* LIGHTBOX */
+#lightbox { animation: fadeIn 0.2s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.modal-media {
+  transition: opacity 0.15s, transform 0.15s;
+}
+.modal-media:hover {
+  opacity: 0.88;
+  transform: scale(1.01);
+}
+
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; padding: 2rem; min-height: auto; padding-top: 3rem; }
   .hero-right { display: none; }
