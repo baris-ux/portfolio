@@ -47,7 +47,7 @@
         <span class="stat-label">Domaines explorés</span>
       </div>
       <div class="stat">
-        <span class="stat-num" style="color:var(--green)">5</span>
+        <span class="stat-num" style="color:var(--green)">8</span>
         <span class="stat-label">Thèmes majeurs</span>
       </div>
     </div>
@@ -330,7 +330,7 @@
     <!-- Jeux Python Pygame -->
     <div class="act-card">
       <div class="act-card-accent" style="background:var(--orange)"></div>
-      <div class="act-photo-placeholder"><span>📷</span>photo-pygame.jpg</div>
+      <img class="act-photo" src="img/jeux_sonic_python.png" alt="jeux_sonic_python"> 
       <div class="act-icon">🎮</div>
       <div class="act-category" style="color:var(--orange)">Game Dev</div>
       <div class="act-title">Jeux Python · Pygame</div>
@@ -357,9 +357,12 @@
     <div class="section-title">Thèmes<br>couverts</div>
   </div>
   <div class="themes-row reveal">
-    <div class="theme-pill" style="border-color:var(--orange); background:rgba(255,90,31,0.05)"><span class="pill-icon">⚡</span><span style="color:var(--orange)">Développement Python & Game Dev</span></div>
+    <div class="theme-pill" style="border-color:var(--orange); background:rgba(255,90,31,0.05)"><span class="pill-icon">🏆</span><span style="color:var(--orange)">Compétition</span></div>
+    <div class="theme-pill" style="border-color:var(--orange); background:rgba(255,90,31,0.05)"><span class="pill-icon">🐍</span><span style="color:var(--orange)">Formation Python</span></div>
+    <div class="theme-pill" style="border-color:var(--orange); background:rgba(255,90,31,0.05)"><span class="pill-icon">🎮</span><span style="color:var(--orange)">Game Dev & Pygame</span></div>
     <div class="theme-pill" style="border-color:var(--pink); background:rgba(255,60,172,0.05)"><span class="pill-icon">🎨</span><span style="color:var(--pink)">Création 3D & Animation</span></div>
     <div class="theme-pill" style="border-color:var(--blue); background:rgba(26,63,255,0.05)"><span class="pill-icon">🌐</span><span style="color:var(--blue)">Réseaux & Infrastructure</span></div>
+    <div class="theme-pill" style="border-color:var(--muted); background:rgba(107,104,105,0.05)"><span class="pill-icon">🔧</span><span style="color:var(--muted)">Hardware</span></div>
     <div class="theme-pill" style="border-color:var(--green); background:rgba(0,196,122,0.05)"><span class="pill-icon">💡</span><span style="color:var(--green)">Entrepreneuriat & Idéation</span></div>
     <div class="theme-pill" style="border-color:var(--muted); background:rgba(107,104,105,0.05)"><span class="pill-icon">🤝</span><span style="color:var(--muted)">Pédagogie & Transmission</span></div>
   </div>
@@ -373,7 +376,7 @@
       <div style="font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;color:var(--ink);letter-spacing:-0.02em;line-height:1.1;margin-bottom:0.5rem;">Envie d'en savoir plus ?</div>
       <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:0.06em;">Télécharge mon CV complet en PDF</div>
     </div>
-    <a href="cv-baris-ozcelik.pdf" download style="display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:13px;font-weight:700;background:var(--ink);color:white;padding:16px 28px;border-radius:14px;text-decoration:none;letter-spacing:0.02em;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translate(-3px,-3px)';this.style.boxShadow='5px 5px 0 var(--orange)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">⬇ Télécharger le CV</a>
+    <a href="cv_baris_fr.pdf" download style="display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:13px;font-weight:700;background:var(--ink);color:white;padding:16px 28px;border-radius:14px;text-decoration:none;letter-spacing:0.02em;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translate(-3px,-3px)';this.style.boxShadow='5px 5px 0 var(--orange)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">⬇ Télécharger le CV</a>
   </div>
 </section>
 
@@ -760,8 +763,15 @@
           <div class="modal-section-title">Faits & Apprentissages</div>
         </div>
         <div class="modal-section-body">
-          <p>J'ai découvert le moteur de simulation de fluides de Blender (Mantaflow), les <strong>keyframes</strong> pour contrôler l'animation dans le temps, et les techniques de rendu d'une séquence animée. La simulation de fluides est particulièrement complexe : elle nécessite de régler des dizaines de paramètres (viscosité, résolution, domaine de simulation) et de nombreuses heures de calcul.</p>
-          <p>Ce projet m'a appris la <strong>patience et la méthode</strong> : quand un rendu prend 20 minutes et que le résultat n'est pas satisfaisant, on apprend vite à tester sur de courtes séquences avant de lancer un rendu complet.</p>
+          <p>J'ai réalisé un second projet Blender en explorant l'animation et la simulation physique. 
+          J'ai découvert le moteur de fluides Mantaflow, les <strong>keyframes</strong> pour contrôler 
+          l'animation dans le temps, et les techniques de rendu d'une séquence animée. La simulation 
+          de fluides est particulièrement complexe : elle nécessite de régler des dizaines de paramètres 
+          (viscosité, résolution, domaine de simulation) et de nombreuses heures de calcul.</p>
+
+          <p>J'ai dû recommencer à plusieurs reprises — le fluide débordait de la tasse ou fuyait à 
+          travers les parois. Cette expérience m'a permis d'améliorer ma rigueur et ma persévérance, 
+          en plus de mes compétences en animation 3D.</p>
         </div>
       </div>
       <div class="modal-section">
@@ -847,7 +857,7 @@
         <div class="modal-chip">Boucle de jeu</div>
         <div class="modal-chip">Collisions & événements</div>
       </div>
-      <div class="modal-img-placeholder">📷 photo-pygame.jpg</div>
+      <video class="modal-img modal-media" src="img/démo_jeux_sonic.mp4" controls loop muted playsinline style="width:100%;border-radius:12px;cursor:zoom-in;" onclick="openLightbox(this.src,'video')"></video>
     </div>
     <div class="modal-body">
       <div class="modal-section">
@@ -865,8 +875,20 @@
           <div class="modal-section-title">Faits & Apprentissages</div>
         </div>
         <div class="modal-section-body">
-          <p>J'ai implémenté une <strong>boucle de jeu</strong> complète, géré les événements clavier/souris, programmé des systèmes de collision, et rendu des sprites en temps réel. Ce qui m'a le plus appris, c'est la notion de <strong>game loop et de framerate</strong> : la logique qui tourne 60 fois par seconde, la séparation entre update (logique) et draw (rendu), la gestion des états du jeu.</p>
-          <p>J'ai aussi découvert les défis de l'<strong>optimisation en temps réel</strong> : un code mal écrit se ressent immédiatement dans les performances du jeu, ce qui m'a forcé à réfléchir à l'efficacité algorithmique de façon très concrète.</p>
+          <p>J'ai implémenté une <strong>boucle de jeu</strong> complète, géré les événements 
+          clavier/souris, programmé des systèmes de collision, et rendu des sprites en temps réel. 
+          Ce qui m'a le plus appris, c'est la notion de <strong>game loop et de framerate</strong> : 
+          la logique qui tourne 60 fois par seconde, la séparation entre update (logique) et draw 
+          (rendu), la gestion des états du jeu.</p>
+
+          <p>Durant ce projet, j'ai utilisé <strong>Photoshop</strong> pour découper et organiser 
+          les sprites, et <strong>Tiled</strong> pour créer les maps du jeu. J'ai été confronté à 
+          plusieurs défis concrets, comme des tuiles affichant un fond rouge résiduel malgré la 
+          suppression du fond dans Photoshop — un problème que j'ai résolu avec ImageMagick.</p>
+
+          <p>J'ai aussi découvert les défis de l'<strong>optimisation en temps réel</strong> : un 
+          code mal écrit se ressent immédiatement dans les performances du jeu, ce qui m'a forcé 
+          à réfléchir à l'efficacité algorithmique de façon très concrète.</p>
         </div>
       </div>
       <div class="modal-section">
