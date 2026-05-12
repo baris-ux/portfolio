@@ -38,7 +38,7 @@ function getTotalHours() {
 }
 
 const counterEl = document.getElementById('total-counter');
-const totalHours = getTotalHours();
+const totalHours = 60;
 
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
