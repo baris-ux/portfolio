@@ -24,21 +24,41 @@ function animateCounter(el, target, duration = 1800) {
   requestAnimationFrame(step);
 }
 
+// Calcul dynamique du total des heures valorisées
 function getTotalHours() {
   let total = 0;
   document.querySelectorAll('.activites-grid .act-card').forEach(card => {
     const hours = card.querySelectorAll('.act-hours');
     if (hours.length >= 2) {
-      total += parseInt(hours[1].textContent) || 0;
+      // Le 2ème .act-hours est toujours les "h valorisées"
+      total += parseFloat(hours[1].textContent) || 0;
     } else if (hours.length === 1) {
-      total += parseInt(hours[0].textContent) || 0;
+      total += parseFloat(hours[0].textContent) || 0;
     }
   });
-  return total;
+  return Math.round(total);
 }
 
+// Mise à jour de tous les affichages statiques du total
+function updateStaticTotals(total) {
+  // Badge dans la nav
+  const navTag = document.querySelector('.nav-tag');
+  if (navTag) navTag.textContent = total + 'h';
+
+  // Stat dans le hero
+  document.querySelectorAll('.hero-stats .stat-num').forEach(el => {
+    if (el.closest('.stat')?.querySelector('.stat-label')?.textContent.includes('Total')) {
+      el.textContent = total + 'h';
+    }
+  });
+}
+
+// Initialisation au chargement
+const totalHours = getTotalHours();
+updateStaticTotals(totalHours);
+
+// Animation du compteur au scroll
 const counterEl = document.getElementById('total-counter');
-const totalHours = 60;
 
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

@@ -753,6 +753,107 @@ html, body {
   .section-num { font-size: 3.5rem; }
 }
 
+/* ══════════════════════════════════════════
+   VIEWER 3D
+══════════════════════════════════════════ */
+.viewer3d-wrap {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border: 1.5px solid rgba(26,26,46,0.1);
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 100%);
+  cursor: grab;
+}
+.viewer3d-wrap:active { cursor: grabbing; }
+
+.viewer3d-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.viewer3d-hint {
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  white-space: nowrap;
+  background: rgba(0,0,0,0.35);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.viewer3d-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* Viewer dans la modale */
+.viewer3d-modal {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border: 2px solid rgba(26,26,46,0.15);
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 100%);
+  cursor: grab;
+}
+.viewer3d-modal:active { cursor: grabbing; }
+.viewer3d-modal .viewer3d-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+.viewer3d-modal .viewer3d-hint {
+  position: absolute;
+  bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s 0.5s;
+  white-space: nowrap;
+  background: rgba(0,0,0,0.4);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.viewer3d-modal .viewer3d-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
 /* Très petits écrans (iPhone SE etc.) */
 @media (max-width: 380px) {
   nav > div:last-child a[href="canada.html"],
