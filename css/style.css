@@ -14,13 +14,20 @@
   --font-mono:    'DM Mono', monospace;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+  overscroll-behavior-y: none;
+  background: var(--orange);
+}
 
 body {
   background: var(--cream);
   color: var(--ink);
   font-family: var(--font-body);
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 /* grain overlay */
