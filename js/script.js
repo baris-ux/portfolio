@@ -26,8 +26,13 @@ function animateCounter(el, target, duration = 1800) {
 
 function getTotalHours() {
   let total = 0;
-  document.querySelectorAll('.act-hours').forEach(el => {
-    total += parseInt(el.textContent) || 0;
+  document.querySelectorAll('.activites-grid .act-card').forEach(card => {
+    const hours = card.querySelectorAll('.act-hours');
+    if (hours.length >= 2) {
+      total += parseInt(hours[1].textContent) || 0;
+    } else if (hours.length === 1) {
+      total += parseInt(hours[0].textContent) || 0;
+    }
   });
   return total;
 }
