@@ -656,3 +656,105 @@ footer {
   footer { padding: 2rem 1.5rem; }
   .total-section { padding: 3rem 1.5rem; }
 }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE
+══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* NAV — hamburger simplifié */
+  nav {
+    padding: 0.75rem 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  nav > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  nav a, nav .nav-tag {
+    font-size: 9px;
+    padding: 3px 8px;
+  }
+
+  /* HERO */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    min-height: auto;
+    padding-top: 2.5rem;
+    gap: 1.5rem;
+  }
+  .hero-right { display: none; }
+  .hero-stats { gap: 1.25rem; }
+
+  /* SECTIONS */
+  section { padding: 3rem 1.5rem; }
+  footer  { padding: 2rem 1.5rem; }
+  .total-section { padding: 3rem 1.5rem; }
+
+  /* GRILLES 2 colonnes → 1 colonne
+     (sections presentation & projet) */
+  #presentation > div[style*="grid-template-columns"],
+  #projet > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* SECTION PRÉSENTATION — passions */
+  #presentation > div[style*="grid-template-columns"] ~ div > div[style*="flex-wrap"] {
+    flex-direction: column;
+  }
+
+  /* SECTION PROJET PRO — tags */
+  #projet > div[style*="display:flex"] {
+    flex-direction: column;
+  }
+
+  /* ACTIVITÉS — éviter les cartes trop étroites */
+  .activites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* THÈMES — pills plus compactes */
+  .themes-row { gap: 0.5rem; }
+  .theme-pill {
+    padding: 0.6rem 1rem;
+    font-size: 12px;
+  }
+
+  /* SECTION CV */
+  #cv {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  #cv a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* MODALES */
+  .modal-box {
+    max-height: 95vh;
+    border-radius: 14px;
+  }
+  .modal-hero { padding: 0 1.25rem 1.25rem; }
+  .modal-body { padding: 0 1.25rem 1.5rem; }
+  .modal-title { font-size: 1.3rem; }
+
+  /* SECTION HEADER — num moins envahissant */
+  .section-num { font-size: 3.5rem; }
+}
+
+/* Très petits écrans (iPhone SE etc.) */
+@media (max-width: 380px) {
+  nav > div:last-child a[href="canada.html"],
+  nav > div:last-child a[href="stage.html"] {
+    display: none;
+  }
+  .hero h1 { font-size: 2rem; }
+  .hero-stats { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+}
