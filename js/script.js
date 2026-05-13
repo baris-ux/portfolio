@@ -53,6 +53,17 @@ function updateStaticTotals(total) {
   });
 }
 
+// Calcul dynamique du nombre d'activités et de thèmes
+const nbActivites = document.querySelectorAll('.activites-grid .act-card').length;
+const nbThemes = document.querySelectorAll('.theme-pill').length;
+
+// Mise à jour dans le hero
+document.querySelectorAll('.hero-stats .stat-num').forEach(el => {
+  const label = el.closest('.stat')?.querySelector('.stat-label')?.textContent;
+  if (label?.includes('Domaines')) el.textContent = nbActivites;
+  if (label?.includes('Thèmes')) el.textContent = nbThemes;
+});
+
 // Initialisation au chargement
 const totalHours = getTotalHours();
 updateStaticTotals(totalHours);
