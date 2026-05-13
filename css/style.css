@@ -18,7 +18,11 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100%;
-  background: var(--orange);
+  background: linear-gradient(
+    to bottom,
+    var(--ink) 50%,
+    var(--orange) 50%
+  );
 }
 
 body {
