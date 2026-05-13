@@ -269,6 +269,32 @@
       <button class="act-read-btn" style="--btn-accent:var(--blue)" onclick="openModal('modal-reseau')">Lire l'analyse →</button>
     </div>
 
+    <!-- Serveur NAS -->
+    <div class="act-card">
+      <div class="act-card-accent" style="background:var(--blue)"></div>
+      <img class="act-photo" src="img/nas_pc.jpg" alt="Serveur NAS TrueNAS">
+      <div class="act-icon">🗄️</div>
+      <div class="act-category" style="color:var(--blue)">Infrastructure</div>
+      <div class="act-title">Serveur NAS · TrueNAS</div>
+      <div class="act-desc">Montage d'un serveur NAS personnel — TrueNAS, accès distant WireGuard, Wake on LAN et gestion du stockage.</div>
+      <div class="act-footer">
+        <div style="display:flex;gap:1.25rem;">
+          <div>
+            <div class="act-hours" style="color:var(--muted)">10</div>
+            <div class="act-hours-label">h réelles</div>
+          </div>
+          <div>
+            <div class="act-hours" style="color:var(--blue)">0</div>
+            <div class="act-hours-label">h valorisées</div>
+          </div>
+        </div>
+        <div class="act-bar-wrap">
+          <div class="act-bar" style="width:0%; background:var(--blue)"></div>
+        </div>
+      </div>
+      <button class="act-read-btn" style="--btn-accent:var(--blue)" onclick="openModal('modal-nas')">Lire l'analyse →</button>
+    </div>
+
     <!-- Création entreprise -->
     <div class="act-card">
       <div class="act-card-accent" style="background:var(--green)"></div>
@@ -997,6 +1023,71 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL NAS -->
+<div class="modal-overlay" id="modal-nas">
+  <div class="modal-box">
+    <div class="modal-close"><button onclick="closeModal('modal-nas')">✕ Fermer</button></div>
+    <div class="modal-hero">
+      <div class="modal-eyebrow" style="color:var(--blue)">🗄️ Infrastructure</div>
+      <div class="modal-title">Serveur NAS · TrueNAS</div>
+      <div class="modal-chips">
+        <div class="modal-chip" style="background:var(--blue);color:white;border-color:var(--blue)">Projet personnel</div>
+        <div class="modal-chip">~10h réelles</div>
+        <div class="modal-chip">Non valorisé</div>
+        <div class="modal-chip">TrueNAS · WireGuard · Termius</div>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;">🖥️ Le serveur</div>
+      <img class="modal-img modal-media" src="img/nas_pc.jpg" alt="PC serveur NAS" style="cursor:zoom-in;" onclick="openLightbox(this.src,'image')">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;margin-top:1.5rem;margin-bottom:0.5rem;">🔒 WireGuard VPN</div>
+      <img src="img/nas_wireguard.jpg" alt="Config WireGuard" style="width:100%;border-radius:12px;cursor:zoom-in;" onclick="openLightbox(this.src,'image')">
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;margin-top:1.5rem;margin-bottom:0.5rem;">💻 Termius — Wake on LAN</div>
+      <img src="img/nas_termius.jpg" alt="Termius Wake on LAN" style="width:100%;border-radius:12px;cursor:zoom-in;" onclick="openLightbox(this.src,'image')">
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-header">
+          <div class="modal-section-num" style="background:var(--blue)">01</div>
+          <div class="modal-section-title">Contexte</div>
+        </div>
+        <div class="modal-section-body">
+          <p>Fort des bases acquises lors de l'atelier réseau à l'EPHEC, j'ai décidé de monter chez moi un <strong>serveur NAS personnel</strong> pour stocker mes fichiers et backups. Mon premier critère était la <strong>consommation électrique</strong> : je voulais laisser la machine tourner en continu, j'ai donc cherché un PC équipé d'un <strong>CPU Intel U</strong> (ultra basse consommation).</p>
+          <p>J'ai également comparé plusieurs <strong>OS NAS</strong> disponibles — TrueNAS, Nextcloud et d'autres alternatives — avant de retenir <strong>TrueNAS</strong> pour sa stabilité et ses fonctionnalités.</p>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-header">
+          <div class="modal-section-num" style="background:var(--blue)">02</div>
+          <div class="modal-section-title">Faits & Apprentissages</div>
+        </div>
+        <div class="modal-section-body">
+          <p>Une fois TrueNAS installé, j'ai configuré <strong>WireGuard</strong> pour un accès distant sécurisé via VPN, ouvert le port SSH, et utilisé <strong>Termius</strong> avec la fonctionnalité <strong>Wake on LAN</strong> pour allumer et éteindre le serveur depuis n'importe où. Cette découverte a d'ailleurs remis en question mon hypothèse de départ : si je pouvais allumer le serveur à la demande, le laisser tourner en continu n'était plus nécessaire — le critère de basse consommation devenait moins critique.</p>
+          <p>J'ai tenté de mettre en place du <strong>RAID</strong> pour sécuriser le stockage contre les pannes, mais la carte mère du PC ne disposait que d'<strong>un seul port SATA</strong> — ce qui rendait le RAID impossible. C'est une erreur de choix hardware que j'aurais pu éviter : acheter un PC avec plus de ports SATA aurait été une meilleure alternative, même si cela impliquait une consommation légèrement plus élevée.</p>
+          <p>Sans RAID, le stockage reste <strong>vulnérable en cas de panne</strong> — ce qui m'a empêché d'y stocker des fichiers vraiment critiques. J'ai finalement revendu le PC en connaissance de cause, ayant tiré toutes les leçons de ce projet.</p>
+          <div class="modal-quote" style="border-left:4px solid var(--blue);background:rgba(26,63,255,0.05)">
+            Ce projet m'a appris que les contraintes matérielles doivent être analysées avant l'achat, pas après — une leçon que j'applique maintenant systématiquement.
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-header">
+          <div class="modal-section-num" style="background:var(--blue)">03</div>
+          <div class="modal-section-title">Lien avec mon projet professionnel</div>
+        </div>
+        <div class="modal-section-body">
+          <p>Ce projet m'a confronté à des problèmes réels d'<strong>infrastructure, de réseau et de hardware</strong> — exactement le type de compétences recherchées en DevOps ou en administration système. Savoir monter, configurer et déboguer un serveur perso est un avantage concret dans un environnement professionnel tech.</p>
+          <div class="modal-tags">
+            <span class="modal-tag" style="background:rgba(26,63,255,0.08);color:var(--blue);">🗄️ TrueNAS & NAS</span>
+            <span class="modal-tag" style="background:rgba(26,63,255,0.08);color:var(--blue);">🔒 WireGuard VPN</span>
+            <span class="modal-tag" style="background:rgba(26,63,255,0.08);color:var(--blue);">⚡ Wake on LAN</span>
+            <span class="modal-tag" style="background:rgba(26,63,255,0.08);color:var(--blue);">⚠️ Limites RAID & hardware</span>
+            <span class="modal-tag" style="background:rgba(26,63,255,0.08);color:var(--blue);">🔍 Analyse avant achat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
 
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;padding:1.5rem;">
