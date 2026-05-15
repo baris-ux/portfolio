@@ -370,9 +370,18 @@ footer {
 <script>
   window.addEventListener('load', () => {
     setTimeout(() => {
-      const pct = 15;
-      document.getElementById('bar').style.width = pct + '%';
-      document.getElementById('pct').textContent = pct + '%';
+      const progress = {
+        index: 0,
+        canada: 0,
+        stage: 0,
+      };
+
+      const total = Math.round(
+        (progress.index + progress.canada + progress.stage) / 3
+      );
+
+      document.getElementById('bar').style.width = total + '%';
+      document.getElementById('pct').textContent = total + '%';
     }, 400);
   });
 </script>
