@@ -64,6 +64,31 @@ nav {
   letter-spacing: 0.05em;
 }
 
+nav a {
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.2s;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--yellow);
+  transition: width 0.25s ease;
+}
+
+nav a:hover {
+  color: white !important;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
 /* HERO */
 .hero {
   min-height: 92vh;
