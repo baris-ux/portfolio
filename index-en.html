@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Baris Ozcelik (EN)</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Nunito:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F5F0E8;
+  --orange: #FF5A1F;
+  --blue:   #1A3FFF;
+  --green:  #00C47A;
+  --yellow: #FFD93D;
+  --pink:   #FF3CAC;
+  --ink:    #1A1A2E;
+  --muted:  #6B6869;
+  --font-display: 'Unbounded', sans-serif;
+  --font-body:    'Nunito', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background: var(--ink);
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 2.5rem;
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 0.06em;
+}
+.nav-links {
+  display: flex; gap: 0.75rem; align-items: center;
+}
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--yellow);
+  transition: width 0.25s ease;
+}
+.nav-links a:hover { color: white; }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-links a.highlighted {
+  color: var(--yellow);
+  border: 1px solid rgba(255,217,61,0.4);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.nav-links a.highlighted::after { display: none; }
+
+.nav-lang {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--yellow);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,217,61,0.4);
+  padding: 4px 12px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+.nav-lang:hover { background: rgba(255,217,61,0.1); }
+
+/* MAIN */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-circle1 {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: var(--yellow);
+  opacity: 0.2;
+  right: -150px; top: -150px;
+  pointer-events: none;
+}
+.bg-circle2 {
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.1;
+  left: -80px; bottom: -80px;
+  pointer-events: none;
+}
+
+.content {
+  max-width: 680px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.7s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(255,90,31,0.1);
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.heading .accent { color: var(--orange); }
+
+.desc {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+}
+
+.progress-wrap {
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.progress-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-bar-bg {
+  height: 8px;
+  background: rgba(26,26,46,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(to right, var(--orange), var(--yellow));
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-back {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: 1.5px solid var(--ink);
+  background: white;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.back-link:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.back-link.primary {
+  background: var(--ink);
+  color: white;
+}
+.back-link.primary:hover {
+  box-shadow: 4px 4px 0 var(--orange);
+}
+
+.wip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: var(--yellow);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 20px;
+}
+
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--yellow);
+  animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* FOOTER */
+footer {
+  background: var(--orange);
+  color: white;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-msg {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.footer-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 0.4rem;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 600px) {
+  nav { padding: 0.75rem 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+  .nav-links { flex-wrap: wrap; gap: 0.4rem; }
+  main { padding: 2.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Baris Ozcelik · Portfolio EPHEC</div>
+  <div class="nav-links">
+    <a href="index.html" class="highlighted">🇫🇷 FR</a>
+    <a href="canada.html">International week</a>
+    <a href="stage.html">Internship</a>
+  </div>
+</nav>
+
+<main>
+  <div class="bg-circle1"></div>
+  <div class="bg-circle2"></div>
+
+  <div class="content">
+    <div class="eyebrow">🚧 Work in progress</div>
+
+    <h1 class="heading">
+      English version<br>
+      <span class="accent">coming soon.</span>
+    </h1>
+
+    <p class="desc">
+      I'm currently working on the English translation of my portfolio. 
+      In the meantime, feel free to explore the French version — or check out 
+      my internship and international week pages below.
+    </p>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Translation progress</span>
+        <span id="pct">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="bar"></div>
+      </div>
+    </div>
+
+    <div class="nav-back">
+      <a href="index.html" class="back-link primary">← Back to French version</a>
+      <a href="canada.html" class="back-link">International week</a>
+      <a href="stage.html" class="back-link">Internship</a>
+    </div>
+
+    <div class="wip-badge">
+      <div class="dot"></div>
+      Actively being translated
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>
+    <div class="footer-msg">(Soon) Graduate &<br>ready to build.</div>
+    <div class="footer-sub">Computer Science · End-of-studies portfolio</div>
+  </div>
+  <div style="font-family:var(--font-display); font-size:3rem; font-weight:900; opacity:0.3">→</div>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const pct = 15;
+      document.getElementById('bar').style.width = pct + '%';
+      document.getElementById('pct').textContent = pct + '%';
+    }, 400);
+  });
+</script>
+
+</body>
+</html>
